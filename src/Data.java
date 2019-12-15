@@ -11,39 +11,24 @@ public class Data {
 
 	public void setInitialValues() {
 		//Setting up states
-		createStates(20);
-		listAllStatesMap.put("qBRPlywalnia", new State("qBRPlywalnia", 0));
-		listAllStatesMap.put("qR1Plywalnia", new State("qR1Plywalnia", 1));
-		listAllStatesMap.put("qR2Plywalnia", new State("qR2Plywalnia", 2));
-		listAllStatesMap.put("qBRSauna", new State("qBRSauna", 0));
-		listAllStatesMap.put("qR1Sauna", new State("qR1Sauna", 1));
-		listAllStatesMap.put("qR2Sauna", new State("qR2Sauna", 2));
-		listAllStatesMap.put("qR3Sauna", new State("qR3Sauna", 3));
-		listAllStatesMap.put("qR4Sauna", new State("qR4Sauna", 4));
-		listAllStatesMap.put("qR5Sauna", new State("qR5Sauna", 5));
-		
+		createStates(15);
+
 		// Setting starting state
 		startingState = "q0";
 		
 		// Setting available symbols
-		String[] availableSymbols = {"1", "2", "5", "K"};
+		String[] availableSymbols = {"0", "1", "2", "3", "4", "a", "b", "c", "d", "e"};
 		setAvailableSymbols(availableSymbols);
 		
 		//Setting accepting states
-		addAcceptingStates(listAllStatesMap.get("qBRPlywalnia"));
-		addAcceptingStates(listAllStatesMap.get("qR1Plywalnia"));
-		addAcceptingStates(listAllStatesMap.get("qR2Plywalnia"));
-		addAcceptingStates(listAllStatesMap.get("qBRSauna"));
-		addAcceptingStates(listAllStatesMap.get("qR1Sauna"));
-		addAcceptingStates(listAllStatesMap.get("qR2Sauna"));
-		addAcceptingStates(listAllStatesMap.get("qR3Sauna"));
-		addAcceptingStates(listAllStatesMap.get("qR4Sauna"));
-		addAcceptingStates(listAllStatesMap.get("qR5Sauna"));
+		addAcceptingStates(listAllStatesMap.get("q7"));
+		addAcceptingStates(listAllStatesMap.get("q14"));
 		
-		setTransitions("q0", "1 q1;2 q2;5 q5;K q0");
-		setTransitions("q1", "1 q2;2 q3;5 q6;K q1");
-		setTransitions("q2", "1 q3;2 q4;5 q7;K q2");
-		setTransitions("q3", "1 q4;2 q5;5 q8;K q3");
+		setTransitions("q0", "0 q1,q2;1 q1,q3;2 q1,q4;3 q1,q5;4 q1,q6;a q8,q9;b q8,q10;c q8,q11;d q8,q12;e q8,q13");
+		setTransitions("q1", "0 q1,q2;1 q1,q3;2 q1,q4;3 q1,q5;4 q1,q6;a X;b X;c X;d X;e X");
+		setTransitions("q2", "0 q7;1 X;2 X;3 X;4 X;a X;b X;c X;d X;e X");
+		setTransitions("q3", "0 X;1 q7;2 X;3 X;4 X;a X;b X;c X;d X;e X");
+		
 		setTransitions("q4", "1 q5;2 q6;5 q9;K q4");
 		setTransitions("q5", "1 q6;2 q7;5 q10;K q5");
 		setTransitions("q6", "1 q7;2 q8;5 q11;K q6");
@@ -53,17 +38,9 @@ public class Data {
 		setTransitions("q10", "1 q11;2 q12;5 qR3Sauna;K qR1Plywalnia");
 		setTransitions("q11", "1 q12;2 qR1Sauna;5 qR4Sauna;K qR2Plywalnia");
 		setTransitions("q12", "1 qR1Sauna;2 qR2Sauna;5 qR5Sauna;K qBRSauna");
+		setTransitions("q13", "1 qR1Sauna;2 qR2Sauna;5 qR5Sauna;K qBRSauna");
+		setTransitions("q14", "1 qR1Sauna;2 qR2Sauna;5 qR5Sauna;K qBRSauna");
 
-		setTransitions("qBRPlywalnia", "1 qBRPlywalnia;2 qBRPlywalnia;5 q0;K qBRPlywalnia");
-		setTransitions("qR1Plywalnia", "1 qR1Plywalnia;2 qR1Plywalnia;5 q0;K qR1Plywalnia");
-		setTransitions("qR2Plywalnia", "1 qR2Plywalnia;2 qR2Plywalnia;5 q0;K qR2Plywalnia");
-		
-		setTransitions("qBRSauna", "1 qBRSauna;2 qBRSauna;5 q0;K qBRSauna");
-		setTransitions("qR1Sauna", "1 qR1Sauna;2 qR1Sauna;5 q0;K qR1Sauna");
-		setTransitions("qR2Sauna", "1 qR2Sauna;2 qR2Sauna;5 q0;K qR2Sauna");
-		setTransitions("qR3Sauna", "1 qR3Sauna;2 qR3Sauna;5 q0;K qR3Sauna");
-		setTransitions("qR4Sauna", "1 qR4Sauna;2 qR4Sauna;5 q0;K qR4Sauna");
-		setTransitions("qR5Sauna", "1 qR5Sauna;2 qR5Sauna;5 q0;K qR5Sauna");
 	}
 
 	public void createStates(int numberOfStates) {
