@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class State {
 	Transitions transitions;
 	private String name;
@@ -16,13 +18,13 @@ public class State {
 		transitions = new Transitions(value);
 	}
 
-	public State goToNextState(String inputData) {
-		if(Data.availableSymbols.contains(inputData))
+	public ArrayList<State> goToNextState(String string) {
+		if(Data.availableSymbols.contains(string))
 		{
-			return transitions.selectNextState(inputData);
+			return transitions.selectNextState(string);
 		}
 		System.out.println("Symbol does not belong to the list of available symbols!");
-		return this;
+		return new ArrayList<State>();
 	}
 
 	@Override
