@@ -4,7 +4,7 @@ public class State {
 	Transitions transitions;
 	private String name;
 	private int value;
-
+	private String outputString;
 	public State() {
 
 	}
@@ -35,5 +35,13 @@ public class State {
 	int getValue()
 	{
 		return value;
+	}
+
+	public String getOutputString() {
+		return outputString;
+	}
+
+	public void setOutputString(String outputString) {
+		this.outputString = outputString;
 	}
 }

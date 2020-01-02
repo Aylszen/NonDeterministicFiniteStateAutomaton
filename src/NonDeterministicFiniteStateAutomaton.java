@@ -25,7 +25,8 @@ public class NonDeterministicFiniteStateAutomaton {
 		Set<State> stateSet = new HashSet<State>();
 		stateSet.add(startingState);
 		Data.printStateAndTransitions(stateSet);
-		Data.saveAutomatonPath(automatonPathList, stateSet);
+		//Data.saveAutomatonPath(automatonPathList, stateSet);
+		//automatonPathList.add("-->(" + startingState + ")");
 		System.out.println("#####");
 
 		for (int i = 0; i < inputDataString.length(); i++) {
@@ -39,15 +40,15 @@ public class NonDeterministicFiniteStateAutomaton {
 			}
 			stateSet.clear();
 			stateSet = tempStateList;
-			Data.saveAutomatonPath(automatonPathList, stateSet);
+			//Data.saveAutomatonPath(automatonPathList, stateSet);
 			Data.printStateAndTransitions(stateSet);
 			System.out.println("#####");
 		}
 
-		System.out.println(automatonPathList);
+		//System.out.println(automatonPathList);
 		for (State state : stateSet) {
 			if (Data.acceptingStates.contains(state)) {
-				System.out.println("NonDeterministicFiniteStateAutomaton is correct!\n");
+				System.out.println(state.getOutputString() + "\n");
 				return;
 			}
 		}

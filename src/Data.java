@@ -30,7 +30,9 @@ public class Data {
 
 		// Setting accepting states
 		addAcceptingStates(listAllStatesMap.get("q7"));
+		listAllStatesMap.get("q7").setOutputString("Repetition found in numbers!");
 		addAcceptingStates(listAllStatesMap.get("q14"));
+		listAllStatesMap.get("q7").setOutputString("Repetition found in letters!");
 
 		setTransitions("q0", "0 q1,q2;1 q1,q3;2 q1,q4;3 q1,q5;4 q1,q6;a q8,q9;b q8,q10;c q8,q11;d q8,q12;e q8,q13");
 		setTransitions("q1", "0 q1,q2;1 q1,q3;2 q1,q4;3 q1,q5;4 q1,q6;a X;b X;c X;d X;e X");
@@ -134,7 +136,7 @@ public class Data {
 				}
 				else
 				{
-					automatonPathList.add(leftBracket + state + rightBracket + "-->");
+					automatonPathList.add( "-->" + leftBracket + state + rightBracket);
 				}
 
 			}
