@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
@@ -102,5 +103,45 @@ public class Data {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public static void saveAutomatonPath(ArrayList<String> automatonPathList, Set<State> stateSet) {
+		if (automatonPathList.isEmpty()) {
+			String automatonString, leftBracket, rightBracket = new String();
+			if (acceptingStates.contains(stateSet.iterator().next())) {
+				leftBracket = "(";
+				rightBracket = ")";
+			} else {
+				leftBracket = "((";
+				rightBracket = "))";
+			}
+			automatonPathList.add(leftBracket + stateSet.iterator().next() + rightBracket + "-->");
+		} else {
+			Iterator<String> automatonPathListIter = automatonPathList.iterator();
+			for (State state : stateSet) {
+				String automatonString, leftBracket, rightBracket = new String();
+				if (acceptingStates.contains(state)) {
+					leftBracket = "(";
+					rightBracket = ")";
+				} else {
+					leftBracket = "((";
+					rightBracket = "))";
+				}
+				
+				if (automatonPathListIter.hasNext()) {
+					String automatonPath = automatonPathListIter.next();
+					automatonPath = automatonPath + leftBracket + state + rightBracket;
+				}
+				else
+				{
+					automatonPathList.add(leftBracket + state + rightBracket + "-->");
+				}
+
+			}
+		}
+	}
+	
+	public static void saveAutomatonPath2(ArrayList<String> automatonPathList, Set<State> stateSet) {
+	
 	}
 }
