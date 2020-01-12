@@ -40,18 +40,16 @@ public class NonDeterministicFiniteStateAutomaton {
 			}
 			stateSet.clear();
 			stateSet = tempStateList;
-			//Data.saveAutomatonPath(automatonPathList, stateSet);
 			Data.printStateAndTransitions(stateSet);
 			System.out.println("#####");
 		}
 
-		//System.out.println(automatonPathList);
 		for (State state : stateSet) {
 			if (Data.acceptingStates.contains(state)) {
 				System.out.println(state.getOutputString() + "\n");
 				return;
 			}
 		}
-		System.out.println("NonDeterministicFiniteStateAutomaton is not correct!\n");
+		System.out.println("Repetition not found!\n");
 	}
 }
